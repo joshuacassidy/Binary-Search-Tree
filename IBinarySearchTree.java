@@ -1,6 +1,3 @@
-/**
- * Created by Josh on 15/11/2017.
- */
 public interface IBinarySearchTree<T extends Comparable<T>> {
     public void delete(T key);
     public Node<T> delete(Node<T> node, T key);
@@ -14,5 +11,8 @@ public interface IBinarySearchTree<T extends Comparable<T>> {
     public boolean search(Node node, T key);
     public void traverse();
     public void inOrderTraversal(Node<T> node);
+    public void postOrderTraversal(Node<T> node);
+    public void preOrderTraversal(Node<T> node);
+
 
 }

@@ -1,6 +1,3 @@
-/**
- * Created by Josh on 15/11/2017.
- */
 public class Node<T extends Comparable<T>> {
 
     public Node<T> left, right;

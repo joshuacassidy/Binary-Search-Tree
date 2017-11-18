@@ -1,6 +1,3 @@
-/**
- * Created by Josh on 15/11/2017.
- */
 public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchTree {
 
     private Node<T> root;
@@ -17,12 +14,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
     @Override
     public Node<T> delete(Node node, Comparable key) {
         if (node == null) {
-            System.out.println(2314425);
             return node;
         } else {
-            if (node.getData().compareTo(key) < 0) {
+            if (node.getData().compareTo(key) > 0) {
                 return delete(node.getLeft(), key);
-            } else if (node.getData().compareTo(key) > 0) {
+            } else if (node.getData().compareTo(key) < 0) {
                 return delete(node.getRight(), key);
             } else {
                 if (node.getRight() == null && node.getLeft() == null) {
@@ -64,7 +60,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 
     @Override
     public void insert(Node node, Comparable data) {
-        if(node.getData().compareTo(data) < 0){
+        if(node.getData().compareTo(data) > 0){
             if (node.getLeft() == null) {
                 node.left = new Node<>(data);
             } else {
@@ -95,7 +91,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
     @Override
     public Node<T> getMin(Node node) {
         if (node.getLeft() != null) {
-            return getMax(node.getLeft());
+            return getMin(node.getLeft());
         }
         return node;
     }
@@ -131,7 +127,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         if (isEmpty()) {
             throw new BinarySearchTreeIsEmptyException("Can't Traverse an empty bst");
         } else {
-            inOrderTraversal(root);
+            postOrderTraversal(root);
         }
     }
 
@@ -144,4 +140,26 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
         }
     }
 
+    @Override
+    public void postOrderTraversal(Node node) {
+        if (node != null) {
+            postOrderTraversal(node.getLeft());
+            postOrderTraversal(node.getRight());
+            System.out.print(node.getData() + " ");
+
+        }
+    }
+
+    @Override
+    public void preOrderTraversal(Node node) {
+        if (node != null) {
+            System.out.print(node.getData() + " ");
+            preOrderTraversal(node.getLeft());
+            preOrderTraversal(node.getRight());
+        }
+    }
+
+    public Node<T> getRoot() {
+        return root;
+    }
 }

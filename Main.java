@@ -1,6 +1,3 @@
-/**
- * Created by Josh on 15/11/2017.
- */
 public class Main {
     public static void main(String[] args) {
         BinarySearchTree<Integer> binarySearchTree = new BinarySearchTree<>();
@@ -33,7 +30,9 @@ public class Main {
         binarySearchTree.insert(11);
         binarySearchTree.insert(14);
         binarySearchTree.delete(58);
-//        System.out.println(binarySearchTree.search(10));
+        System.out.println(binarySearchTree.search(47));
+        System.out.println(binarySearchTree.getMin(binarySearchTree.getRoot()).getData());
+        System.out.println(binarySearchTree.getMax(binarySearchTree.getRoot()).getData());
         binarySearchTree.traverse();
     }
 }
